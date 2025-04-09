@@ -1,5 +1,5 @@
 // "use client";
-
+export const dynamic = "force-dynamic";
 import CategoryList from "@/components/ui/CategoryList";
 import ProductList from "@/components/ui/ProductList";
 import Skeleton from "@/components/ui/Skeleton";
