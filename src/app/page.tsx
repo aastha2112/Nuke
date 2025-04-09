@@ -4,33 +4,10 @@ import CategoryList from "@/components/ui/CategoryList";
 import ProductList from "@/components/ui/ProductList";
 import Skeleton from "@/components/ui/Skeleton";
 import Slider from "@/components/ui/Slider";
-import { WixClientContext } from "@/context/wixContext";
-import { useWixClient } from "@/hooks/useWixClient";
-import { wixClientServer } from "@/lib/wixClientServer";
 import { Suspense } from "react";
 
 const HomePage = async () => {
   // TEST (FETCHING ON THE CLIENT COMPONENT)
-
-  // const wixClient = useWixClient()
-
-  // useEffect(() => {
-  //   const getProducts = async () => {
-  //     const res = await wixClient.products.queryProducts().find();
-
-  //     console.log(res)
-  //   };
-
-  //   getProducts();
-  // }, [wixClient]);
-
-  // TEST (FETCHING ON THE SERVER COMPONENT)
-
-  // const wixClient = await wixClientServer();
-
-  // const res = await wixClient.products.queryProducts().find();
-
-  // console.log(res);
 
   return (
     <div className="">
