@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { media as wixMedia } from "@wix/sdk";
 
 import { useCartStore } from "@/hooks/useCartStore";
@@ -15,8 +15,15 @@ const CheckoutPage = () => {
     "upi" | "card" | "bank" | null
   >(null);
   const wixClient = useWixClient();
-
+  const isLoggedIn = wixClient.auth.loggedIn();
+  console.log(isLoggedIn, "logged in");
   const { cart, isLoading, removeItem } = useCartStore();
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      router.push("/login");
+    }
+  }, [isLoggedIn]);
 
   const handlePay = () => {
     if (!selectedMethod) return alert("Please select a payment method.");

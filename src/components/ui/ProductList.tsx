@@ -47,7 +47,6 @@ const ProductList = async ({
   }
 
   const res = await productQuery.find();
-  console.log(res, "resonsee");
 
   return (
     <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">

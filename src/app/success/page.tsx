@@ -9,19 +9,23 @@ const SuccessPage = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       router.push("/orders/1");
-    }, 3000);
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, [router]);
 
   return (
-    <div className="flex flex-col gap-6 items-center justify-center h-[calc(100vh-180px)]">
+    <div className="flex flex-col gap-4 sm:gap-6 items-center justify-center h-[calc(100vh-180px)] px-4 text-center">
       <Confetti width={2000} height={1000} />
-      <h1 className="text-6xl text-green-700">Successful</h1>
-      <h2 className="text-xl font-medium">
+      <h1 className="text-4xl sm:text-5xl md:text-6xl text-green-700 font-bold">
+        Successful
+      </h1>
+      <h2 className="text-base sm:text-lg md:text-xl font-medium">
         We sent the invoice to your e-mail
       </h2>
-      <h3>You are being redirected to the orders page...</h3>
+      <h3 className="text-sm sm:text-base">
+        You are being redirected to the orders page...
+      </h3>
     </div>
   );
 };

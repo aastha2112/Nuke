@@ -77,7 +77,7 @@ const OrderPage = () => {
         <div className="mt-8">
           <Link
             href="/"
-            className="flex justify-center items-center w-1/3 bg-lama text-white px-4 py-2 rounded hover:bg-gray-700 transition duration-200"
+            className="flex justify-center items-center w-full sm:w-2/3 md:w-1/2 lg:w-1/3 bg-lama text-white px-4 py-2 rounded hover:bg-gray-700 transition duration-200 mx-auto"
           >
             ← Back to Home
           </Link>
