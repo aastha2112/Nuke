@@ -18,7 +18,7 @@ const ProductCard = ({ shoe }) => {
       />
       <h2 className="text-lg font-semibold mt-2">{shoe.title}</h2>
       <p className="text-gray-600">{shoe.description}</p>
-      <p className="text-blue-500 font-bold">${shoe.price}</p>
+      <p className="text-blue-500 font-bold">Rs. {shoe.price}</p>
     </div>
   );
 };

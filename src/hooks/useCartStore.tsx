@@ -17,7 +17,7 @@ type CartState = {
 };
 
 export const useCartStore = create<CartState>((set) => ({
-  cart: {} as currentCart.Cart, // ✅ fixed type
+  cart: {} as currentCart.Cart, // fixed type
   isLoading: true,
   counter: 0,
 

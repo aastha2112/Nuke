@@ -15,6 +15,7 @@ const Add = ({
 }) => {
   const [quantity, setQuantity] = useState(1);
 
+  console.log(productId, variantId, "prdouct and variant id");
   // // TEMPORARY
   // const stock = 4;
 
@@ -57,16 +58,27 @@ const Add = ({
             <div className="text-xs">Product is out of stock</div>
           ) : (
             <div className="text-xs">
-              Only <span className="text-orange-500">{stockNumber} items</span>{" "}
-              left!
-              <br /> {"Don't"} miss it
+              {stockNumber > 10 ? (
+                ""
+              ) : (
+                <>
+                  <p>
+                    Only{" "}
+                    <span className="text-red-500">
+                      {`${stockNumber} items`}{" "}
+                    </span>
+                    left!
+                    <br />
+                    {"Don't"} miss it
+                  </p>
+                </>
+              )}
             </div>
           )}
         </div>
         <button
           onClick={() => addItem(wixClient, productId, variantId, quantity)}
-          disabled={isLoading}
-          className="w-36 text-sm rounded-3xl ring-1 ring-lama text-lama py-2 px-4 hover:bg-lama hover:text-white disabled:cursor-not-allowed disabled:bg-pink-200 disabled:ring-0 disabled:text-white disabled:ring-none"
+          className="w-36 text-sm rounded-3xl ring-1 ring-lama text-lama py-2 px-4 cursor-pointer hover:bg-[#f35c7a] hover:text-white "
         >
           Add to Cart
         </button>

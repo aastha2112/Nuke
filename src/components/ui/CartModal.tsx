@@ -4,10 +4,9 @@ import Image from "next/image";
 import { useCartStore } from "@/hooks/useCartStore";
 import { media as wixMedia } from "@wix/sdk";
 import { useWixClient } from "@/hooks/useWixClient";
-import { currentCart } from "@wix/ecom";
 import { useRouter } from "next/navigation";
 
-const CartModal = () => {
+const CartModal = ({ handleModal }) => {
   // TEMPORARY
   // const cartItems = true;
   const router = useRouter();
@@ -25,6 +24,7 @@ const CartModal = () => {
       // Redirect to your custom checkout page with checkoutId
       // router.push(`/checkout?checkoutId=${checkout.checkoutId}`);
       router.push("/checkout");
+      handleModal(true);
     } catch (err) {
       console.error("Checkout failed:", err);
     }
@@ -72,7 +72,7 @@ const CartModal = () => {
                             {item.quantity} x{" "}
                           </div>
                         )}
-                        ${item.price?.amount}
+                        Rs. {item.price?.amount}
                       </div>
                     </div>
                     {/* DESC */}
@@ -99,7 +99,7 @@ const CartModal = () => {
           <div className="">
             <div className="flex items-center justify-between font-semibold">
               <span className="">Subtotal</span>
-              <span className="">${cart.subtotal.amount}</span>
+              <span className="">Rs. {+cart?.subtotal?.amount}</span>
             </div>
             <p className="text-gray-500 text-sm mt-2 mb-4">
               Shipping and taxes calculated at checkout.

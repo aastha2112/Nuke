@@ -104,7 +104,7 @@ const NavIcons = () => {
           {counter}
         </div>
       </div>
-      {isCartOpen && <CartModal />}
+      {isCartOpen && <CartModal handleModal={(val) => setIsCartOpen(!val)} />}
     </div>
   );
 };

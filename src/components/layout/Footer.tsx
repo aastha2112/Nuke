@@ -104,7 +104,7 @@ const Footer = () => {
           </div>
           <div className="">
             <span className="text-gray-500 mr-4">Currency</span>
-            <span className="font-medium">$ USD</span>
+            <span className="font-medium">₹ INR</span>
           </div>
         </div>
       </div>

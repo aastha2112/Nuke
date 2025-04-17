@@ -21,13 +21,13 @@ const ProfilePage = () => {
   const orders = [
     {
       _id: "ORDER1234567890",
-      priceSummary: { subtotal: { amount: "99.99" } },
+      priceSummary: { subtotal: { amount: "5330" } },
       _createdDate: new Date().toISOString(),
       status: "Shipped",
     },
     {
       _id: "ORDER0987654321",
-      priceSummary: { subtotal: { amount: "49.50" } },
+      priceSummary: { subtotal: { amount: "8375" } },
       _createdDate: new Date(Date.now() - 86400000 * 2).toISOString(), // 2 days ago
       status: "Processing",
     },
@@ -88,7 +88,7 @@ const ProfilePage = () => {
             >
               <span className="w-1/4">{order._id.substring(0, 10)}...</span>
               <span className="w-1/4">
-                ${order.priceSummary.subtotal.amount}
+                Rs. {order.priceSummary.subtotal.amount}
               </span>
               <span className="w-1/4">{format(order._createdDate)}</span>
               <span className="w-1/4">{order.status}</span>

@@ -6,6 +6,7 @@ import { WixClientContextProvider } from "@/context/wixContext";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import InitVisitor from "@/components/ui/InitVisitor";
+import Preloader from "@/components/ui/Preloader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <Preloader />
         <InitVisitor />
         <WixClientContextProvider>
           <Navbar />

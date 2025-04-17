@@ -9,25 +9,25 @@ const slides = [
     id: 1,
     title: "Summer Sale Collections",
     description: "Sale! Up to 50% off!",
-    img: "https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=800",
+    img: "https://images.pexels.com/photos/16770020/pexels-photo-16770020/free-photo-of-young-woman-in-a-white-dress-and-a-hat.jpeg",
     url: "/",
-    bg: "bg-gradient-to-r from-yellow-50 to-pink-50",
+    bg: "bg-gradient-to-r from-slate-50 to-slate-100",
   },
   {
     id: 2,
     title: "Winter Sale Collections",
     description: "Sale! Up to 50% off!",
-    img: "https://images.pexels.com/photos/1021693/pexels-photo-1021693.jpeg?auto=compress&cs=tinysrgb&w=800",
+    img: "https://images.pexels.com/photos/25745266/pexels-photo-25745266/free-photo-of-young-man-in-a-trendy-outfit-walking-with-headphones-in-a-city.jpeg",
     url: "/",
-    bg: "bg-gradient-to-r from-pink-50 to-blue-50",
+    bg: "bg-gradient-to-r  from-slate-100 to-[#929485]",
   },
   {
     id: 3,
     title: "Spring Sale Collections",
     description: "Sale! Up to 50% off!",
-    img: "https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=800",
+    img: "https://images.pexels.com/photos/8989591/pexels-photo-8989591.jpeg",
     url: "/",
-    bg: "bg-gradient-to-r from-blue-50 to-yellow-50",
+    bg: "bg-gradient-to-r from-slate-50 to-zinc-200",
   },
 ];
 
@@ -37,7 +37,7 @@ const Slider = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-    }, 2000);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);

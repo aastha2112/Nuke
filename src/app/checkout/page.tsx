@@ -2,6 +2,11 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { media as wixMedia } from "@wix/sdk";
+
+import { useCartStore } from "@/hooks/useCartStore";
+import { useWixClient } from "@/hooks/useWixClient";
+import Image from "next/image";
 
 const CheckoutPage = () => {
   const router = useRouter();
@@ -9,6 +14,9 @@ const CheckoutPage = () => {
   const [selectedMethod, setSelectedMethod] = useState<
     "upi" | "card" | "bank" | null
   >(null);
+  const wixClient = useWixClient();
+
+  const { cart, isLoading, removeItem } = useCartStore();
 
   const handlePay = () => {
     if (!selectedMethod) return alert("Please select a payment method.");
@@ -27,27 +35,67 @@ const CheckoutPage = () => {
       <div className="bg-white shadow-md rounded-md p-6 w-full max-w-md flex flex-col gap-4">
         {/* Order Summary */}
         <h2 className="text-lg font-semibold mb-2">Order Summary</h2>
-        <div className="flex flex-col gap-4 border-b pb-4">
-          <div className="flex justify-between items-center">
-            <div>
-              <p className="font-medium">Cyberpunk Hoodie</p>
-              <p className="text-sm text-gray-500">Qty: 1</p>
+
+        {cart.lineItems?.map((item) => (
+          <div className="flex gap-4" key={item._id}>
+            {item.image && (
+              <Image
+                src={
+                  wixMedia.getScaledToFillImageUrl(item.image, 72, 96, {}) ||
+                  "/woman.png"
+                }
+                alt=""
+                width={72}
+                height={96}
+                className="object-cover rounded-md"
+              />
+            )}
+            <div className="flex flex-col justify-between w-full">
+              {/* TOP */}
+              <div className="">
+                {/* TITLE */}
+                <div className="flex items-center justify-between gap-8">
+                  <h3 className="font-semibold">
+                    {item.productName?.original}
+                  </h3>
+                  <div className="p-1 bg-gray-50 rounded-sm flex items-center gap-2">
+                    {item.quantity && item.quantity > 1 && (
+                      <div className="text-xs text-green-500">
+                        {item.quantity} x{" "}
+                      </div>
+                    )}
+                    Rs. {item.price?.amount}
+                  </div>
+                </div>
+                {/* DESC */}
+                <div className="text-sm text-gray-500">
+                  {item.availability?.status}
+                </div>
+              </div>
+              {/* BOTTOM */}
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-500">Qty. {item.quantity}</span>
+                <span
+                  className="text-blue-500"
+                  style={{ cursor: isLoading ? "not-allowed" : "pointer" }}
+                  onClick={() => removeItem(wixClient, item._id!)}
+                >
+                  Remove
+                </span>
+              </div>
             </div>
-            <span>$49.00</span>
           </div>
-          <div className="flex justify-between items-center">
-            <div>
-              <p className="font-medium">Neon Joggers</p>
-              <p className="text-sm text-gray-500">Qty: 1</p>
-            </div>
-            <span>$50.00</span>
-          </div>
-        </div>
+        ))}
+        {/* stop */}
 
         {/* Total */}
+        <div className="flex justify-between  text-md mt-2">
+          <span> Delivery charges:</span>
+          <span> Rs. 70</span>
+        </div>
         <div className="flex justify-between font-semibold text-lg mt-2">
           <span>Total:</span>
-          <span>$99.00</span>
+          <span className="">Rs. {+cart?.subtotal?.amount + 70}</span>{" "}
         </div>
 
         {/* Payment Methods */}

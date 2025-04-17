@@ -11,7 +11,7 @@ const ListPage = async ({ searchParams }: { searchParams: any }) => {
   const cat = await wixClient.collections.getCollectionBySlug(
     searchParams.cat || "all-products"
   );
-
+  console.log(cat.collection?._id || "00000000-000000-000000-000000000001");
   return (
     <div className="px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative">
       {/* CAMPAIGN */}
@@ -32,9 +32,7 @@ const ListPage = async ({ searchParams }: { searchParams: any }) => {
       {/* FILTER */}
       <Filter />
       {/* PRODUCTS */}
-      <h1 className="mt-12 text-xl font-semibold">
-        {cat?.collection?.name} For You!
-      </h1>
+      <h1 className="mt-12 text-xl font-semibold">For You!</h1>
       <Suspense fallback={<Skeleton />}>
         <ProductList
           categoryId={

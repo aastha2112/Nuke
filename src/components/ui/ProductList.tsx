@@ -17,7 +17,6 @@ const ProductList = async ({
   searchParams?: any;
 }) => {
   const wixClient = await wixClientServer();
-
   const productQuery = wixClient.products
     .queryProducts()
     .startsWith("name", searchParams?.name || "")
@@ -37,6 +36,7 @@ const ProductList = async ({
   // Apply category filter ONLY if categoryId is provided
   if (categoryId) {
     productQuery.eq("collectionIds", categoryId);
+    // productQuery.hasSome("collectionIds", [categoryId]);
   }
 
   // Handle sorting
@@ -47,6 +47,7 @@ const ProductList = async ({
   }
 
   const res = await productQuery.find();
+  console.log(res, "resonsee");
 
   return (
     <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">
@@ -58,7 +59,7 @@ const ProductList = async ({
         >
           <div className="relative w-full h-80">
             <Image
-              src={product.media?.mainMedia?.image?.url || "/woman.png"}
+              src={product.media?.mainMedia?.image?.url || "woman.png"}
               alt=""
               fill
               sizes="25vw"
@@ -76,7 +77,7 @@ const ProductList = async ({
           </div>
           <div className="flex justify-between">
             <span className="font-medium">{product.name}</span>
-            <span className="font-semibold">${product.price?.price}</span>
+            <span className="font-semibold">Rs. {product.price?.price}</span>
           </div>
           {product.additionalInfoSections && (
             <div
@@ -90,7 +91,7 @@ const ProductList = async ({
               }}
             ></div>
           )}
-          <button className="rounded-2xl ring-1 ring-lama text-lama w-max py-2 px-4 text-xs hover:bg-lama hover:text-white">
+          <button className="rounded-2xl ring-1 ring-lama text-lama w-max py-2 px-4 text-xs hover:cursor-pointer hover:bg-[#f35c7a] hover:text-white ">
             Add to Cart
           </button>
         </Link>
