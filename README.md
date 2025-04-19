@@ -4,7 +4,10 @@
 
 ## Preview
 
-> Insert deployed link or image preview here if available.
+Click here for [Live Demo](https://nuke-p4rh.vercel.app/)
+
+![Welcome Banner](./public/slider.png)
+![Products Page](./public//products.png)
 
 ## ✨ Features
 
@@ -50,6 +53,8 @@ npm run dev
 - Tailwind CSS
 - App Router
 - Cookies-based Auth
+- Wix
+- Vercel
 
 ## Contribution
 
