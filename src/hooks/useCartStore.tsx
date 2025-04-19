@@ -35,7 +35,7 @@ export const useCartStore = create<CartState>((set) => ({
   },
 
   addItem: async (wixClient, productId, variantId, quantity) => {
-    set({ isLoading: true });
+    set((state) => ({ ...state, isLoading: true }));
     const response = await wixClient.currentCart.addToCurrentCart({
       lineItems: [
         {

@@ -21,6 +21,7 @@ const CheckoutPage = () => {
 
   useEffect(() => {
     if (!isLoggedIn) {
+      alert("Please login to continue.");
       router.push("/login");
     }
   }, [isLoggedIn]);
@@ -36,15 +37,15 @@ const CheckoutPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center px-4 py-10 bg-gray-50">
+    <div className="min-h-screen flex flex-col justify-center items-center px-4 py-6 bg-gray-50">
       <h1 className="text-2xl font-semibold mb-6">Checkout</h1>
 
-      <div className="bg-white shadow-md rounded-md p-6 w-full max-w-md flex flex-col gap-4">
+      <div className="bg-white shadow-md rounded-md p-6 w-full md:max-w-2/3 lg:max-w-1/2 flex flex-col gap-6">
         {/* Order Summary */}
         <h2 className="text-lg font-semibold mb-2">Order Summary</h2>
 
         {cart.lineItems?.map((item) => (
-          <div className="flex gap-4" key={item._id}>
+          <div className="flex gap-4 shadow-xs p-1" key={item._id}>
             {item.image && (
               <Image
                 src={
@@ -61,7 +62,7 @@ const CheckoutPage = () => {
               {/* TOP */}
               <div className="">
                 {/* TITLE */}
-                <div className="flex items-center justify-between gap-8">
+                <div className="flex md:flex-row flex-col md:items-center justify-between gap-2 md:gap-8">
                   <h3 className="font-semibold">
                     {item.productName?.original}
                   </h3>
@@ -75,13 +76,13 @@ const CheckoutPage = () => {
                   </div>
                 </div>
                 {/* DESC */}
-                <div className="text-sm text-gray-500">
+                {/* <div className="text-sm text-gray-500 md:text-md py-1 ">
                   {item.availability?.status}
-                </div>
+                </div> */}
               </div>
               {/* BOTTOM */}
-              <div className="flex justify-between text-sm">
-                <span className="text-gray-500">Qty. {item.quantity}</span>
+              <div className="flex justify-between text-sm py-2">
+                <span className="text-gray-500 ">Qty. {item.quantity}</span>
                 <span
                   className="text-blue-500"
                   style={{ cursor: isLoading ? "not-allowed" : "pointer" }}
@@ -100,7 +101,7 @@ const CheckoutPage = () => {
           <span> Delivery charges:</span>
           <span> Rs. 70</span>
         </div>
-        <div className="flex justify-between font-semibold text-lg mt-2">
+        <div className="flex justify-between bg-gray-200 px-3 py-2 font-semibold text-lg mt-2">
           <span>Total:</span>
           <span className="">Rs. {+cart?.subtotal?.amount + 70}</span>{" "}
         </div>
