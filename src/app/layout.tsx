@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: "Nuke E-Commerce Application",
   description: "A complete e-commerce application with Next.js and Wix",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.png",
   },
 };
 
